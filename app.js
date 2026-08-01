@@ -10,32 +10,28 @@ const centsLabelEl = document.getElementById("cents-label");
 const signupLink = document.getElementById("signup-link");
 const stringLabelEl = document.getElementById("string-label");
 const instrumentButtons = document.querySelectorAll(".instrument-btn");
-const signupModal = document.getElementById("signup-modal");
-const modalSignupLink = document.getElementById("modal-signup-link");
-const modalClose = document.getElementById("modal-close");
-const modalDismiss = document.getElementById("modal-dismiss");
+const signupBanner = document.getElementById("signup-banner");
+const bannerSignupLink = document.getElementById("banner-signup-link");
+const bannerClose = document.getElementById("banner-close");
 
 signupLink.href = SIGNUP_FORM_URL;
-modalSignupLink.href = SIGNUP_FORM_URL;
+bannerSignupLink.href = SIGNUP_FORM_URL;
 
 const SIGNUP_PROMPT_SEEN_KEY = "onmusic_signup_prompt_seen";
 
-function showSignupModal() {
+function showSignupBanner() {
   if (localStorage.getItem(SIGNUP_PROMPT_SEEN_KEY)) return;
-  signupModal.classList.remove("hidden");
+  signupBanner.classList.remove("hidden");
+  signupBanner.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function hideSignupModal() {
-  signupModal.classList.add("hidden");
+function hideSignupBanner() {
+  signupBanner.classList.add("hidden");
   localStorage.setItem(SIGNUP_PROMPT_SEEN_KEY, "true");
 }
 
-modalClose.addEventListener("click", hideSignupModal);
-modalDismiss.addEventListener("click", hideSignupModal);
-modalSignupLink.addEventListener("click", hideSignupModal);
-signupModal.addEventListener("click", (event) => {
-  if (event.target === signupModal) hideSignupModal();
-});
+bannerClose.addEventListener("click", hideSignupBanner);
+bannerSignupLink.addEventListener("click", hideSignupBanner);
 
 let audioContext = null;
 let analyser = null;
@@ -115,7 +111,7 @@ async function startTuner() {
   statusEl.textContent = "Toca una nota";
   toggleBtn.textContent = "Detener afinador";
   tick();
-  showSignupModal();
+  showSignupBanner();
 }
 
 function stopTuner() {
