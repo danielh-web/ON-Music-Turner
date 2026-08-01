@@ -1,4 +1,4 @@
-const SIGNUP_FORM_URL = "https://forms.gle/REEMPLAZAR-CON-TU-FORMULARIO";
+const SIGNUP_FORM_URL = "https://forms.gle/8Cswz8dE8sFBPcXh6";
 
 const toggleBtn = document.getElementById("toggle-btn");
 const statusEl = document.getElementById("status");
