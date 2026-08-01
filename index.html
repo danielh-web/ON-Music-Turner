@@ -4,16 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Afinador ON Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="brand">
-    <h1>ON Music</h1>
+    <img src="assets/logo-on-music.png" alt="ON Music" class="logo" />
     <p class="tagline">Afinador de instrumentos</p>
   </header>
 
   <main>
     <section class="tuner-card">
+      <p class="instrument-label">Instrumento</p>
+      <div id="instrument-selector" class="instrument-selector">
+        <button class="instrument-btn active" data-instrument="chromatic">Cromático</button>
+        <button class="instrument-btn" data-instrument="guitar">Guitarra</button>
+        <button class="instrument-btn" data-instrument="bass">Bajo</button>
+        <button class="instrument-btn" data-instrument="ukulele">Ukulele</button>
+        <button class="instrument-btn" data-instrument="violin">Violín</button>
+      </div>
+
       <button id="toggle-btn" class="primary-btn">Iniciar afinador</button>
       <p id="status" class="status">Toca el botón y permite el uso del micrófono</p>
 
@@ -21,6 +36,7 @@
         <div class="note-name">
           <span id="note-letter">--</span><span id="note-octave"></span>
         </div>
+        <p id="string-label" class="string-label hidden"></p>
         <div class="meter">
           <div class="meter-scale">
             <span>-50</span>

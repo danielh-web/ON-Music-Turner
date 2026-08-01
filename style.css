@@ -1,12 +1,12 @@
 :root {
-  --brand: #2b6cb0;
-  --brand-dark: #1a4971;
-  --bg: #f5f7fa;
-  --card-bg: #ffffff;
-  --text: #1a202c;
-  --muted: #718096;
-  --in-tune: #38a169;
-  --out-of-tune: #e53e3e;
+  --brand: #ff0000;
+  --brand-dark: #cc0000;
+  --bg: #000000;
+  --card-bg: #171717;
+  --text: #ffffff;
+  --muted: #a0a0a0;
+  --in-tune: #00ff00;
+  --out-of-tune: #ff0000;
 }
 
 * {
@@ -15,7 +15,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
   display: flex;
@@ -28,15 +28,16 @@ body {
   padding: 24px 16px 8px;
 }
 
-.brand h1 {
-  margin: 0;
-  color: var(--brand-dark);
-  font-size: 1.8rem;
+.brand .logo {
+  max-width: 280px;
+  width: 80%;
+  height: auto;
 }
 
 .tagline {
   margin: 4px 0 0;
   color: var(--muted);
+  font-weight: 500;
 }
 
 main {
@@ -53,10 +54,52 @@ main {
 .tuner-card,
 .signup-card {
   background: var(--card-bg);
+  border: 1px solid #2a2a2a;
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 24px rgba(255, 0, 0, 0.08);
   text-align: center;
+}
+
+.instrument-label {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.instrument-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.instrument-btn {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid #3a3a3a;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.instrument-btn.active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #ffffff;
+}
+
+.string-label {
+  margin-top: 8px;
+  font-weight: 700;
+  color: var(--text);
 }
 
 .primary-btn {
@@ -66,7 +109,9 @@ main {
   border-radius: 12px;
   padding: 16px 24px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   width: 100%;
   cursor: pointer;
 }
@@ -103,8 +148,8 @@ main {
 
 .note-name {
   font-size: 4rem;
-  font-weight: 700;
-  color: var(--brand-dark);
+  font-weight: 800;
+  color: var(--brand);
   line-height: 1;
 }
 
@@ -169,6 +214,8 @@ main {
 
 .signup-card h2 {
   margin-top: 0;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 footer {

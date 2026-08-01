@@ -2,6 +2,59 @@ const NOTE_NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", 
 const A4_FREQUENCY = 440;
 const A4_MIDI = 69;
 
+const INSTRUMENT_STRINGS = {
+  guitar: [
+    { freq: 82.41, note: "E", octave: 2, label: "Cuerda 6 (Mi grave)" },
+    { freq: 110.0, note: "A", octave: 2, label: "Cuerda 5 (La)" },
+    { freq: 146.83, note: "D", octave: 3, label: "Cuerda 4 (Re)" },
+    { freq: 196.0, note: "G", octave: 3, label: "Cuerda 3 (Sol)" },
+    { freq: 246.94, note: "B", octave: 3, label: "Cuerda 2 (Si)" },
+    { freq: 329.63, note: "E", octave: 4, label: "Cuerda 1 (Mi agudo)" },
+  ],
+  bass: [
+    { freq: 41.2, note: "E", octave: 1, label: "Cuerda 4 (Mi grave)" },
+    { freq: 55.0, note: "A", octave: 1, label: "Cuerda 3 (La)" },
+    { freq: 73.42, note: "D", octave: 2, label: "Cuerda 2 (Re)" },
+    { freq: 98.0, note: "G", octave: 2, label: "Cuerda 1 (Sol)" },
+  ],
+  ukulele: [
+    { freq: 392.0, note: "G", octave: 4, label: "Cuerda 4 (Sol)" },
+    { freq: 261.63, note: "C", octave: 4, label: "Cuerda 3 (Do)" },
+    { freq: 329.63, note: "E", octave: 4, label: "Cuerda 2 (Mi)" },
+    { freq: 440.0, note: "A", octave: 4, label: "Cuerda 1 (La)" },
+  ],
+  violin: [
+    { freq: 196.0, note: "G", octave: 3, label: "Cuerda 4 (Sol)" },
+    { freq: 293.66, note: "D", octave: 4, label: "Cuerda 3 (Re)" },
+    { freq: 440.0, note: "A", octave: 4, label: "Cuerda 2 (La)" },
+    { freq: 659.25, note: "E", octave: 5, label: "Cuerda 1 (Mi)" },
+  ],
+};
+
+function nearestInstrumentString(frequency, instrumentKey) {
+  const strings = INSTRUMENT_STRINGS[instrumentKey];
+  if (!strings) return null;
+
+  let closest = strings[0];
+  let closestCentsAbs = Infinity;
+  let closestCents = 0;
+  for (const string of strings) {
+    const cents = Math.round(1200 * Math.log2(frequency / string.freq));
+    if (Math.abs(cents) < closestCentsAbs) {
+      closestCentsAbs = Math.abs(cents);
+      closestCents = cents;
+      closest = string;
+    }
+  }
+
+  return {
+    noteName: closest.note,
+    octave: closest.octave,
+    label: closest.label,
+    cents: closestCents,
+  };
+}
+
 function frequencyToNote(frequency) {
   const exactMidi = A4_MIDI + 12 * Math.log2(frequency / A4_FREQUENCY);
   const roundedMidi = Math.round(exactMidi);
