@@ -19,6 +19,17 @@
   </header>
 
   <main>
+    <div id="signup-banner" class="signup-banner hidden">
+      <button id="banner-close" class="banner-close" aria-label="Cerrar">&times;</button>
+      <p class="banner-text">
+        <strong>¿Quieres promociones?</strong><br />
+        Regístrate y te avisamos de descuentos y novedades.
+      </p>
+      <a id="banner-signup-link" class="banner-link" href="#" target="_blank" rel="noopener">
+        Regístrate aquí
+      </a>
+    </div>
+
     <section class="tuner-card">
       <p class="instrument-label">Instrumento</p>
       <div id="instrument-selector" class="instrument-selector">
@@ -64,18 +75,6 @@
   <footer>
     <p>ON Music</p>
   </footer>
-
-  <div id="signup-modal" class="modal-overlay hidden">
-    <div class="modal-card">
-      <button id="modal-close" class="modal-close" aria-label="Cerrar">&times;</button>
-      <h2>¿Quieres promociones?</h2>
-      <p>Regístrate y te avisamos de descuentos y novedades.</p>
-      <a id="modal-signup-link" class="primary-btn modal-signup-link" href="#" target="_blank" rel="noopener">
-        Regístrate aquí
-      </a>
-      <button id="modal-dismiss" class="modal-dismiss">Ahora no</button>
-    </div>
-  </div>
 
   <script src="tuner.js"></script>
   <script src="app.js"></script>
