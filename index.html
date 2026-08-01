@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Afinador ON Music</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="brand">
+    <h1>ON Music</h1>
+    <p class="tagline">Afinador de instrumentos</p>
+  </header>
+
+  <main>
+    <section class="tuner-card">
+      <button id="toggle-btn" class="primary-btn">Iniciar afinador</button>
+      <p id="status" class="status">Toca el botón y permite el uso del micrófono</p>
+
+      <div id="tuner-display" class="tuner-display hidden">
+        <div class="note-name">
+          <span id="note-letter">--</span><span id="note-octave"></span>
+        </div>
+        <div class="meter">
+          <div class="meter-scale">
+            <span>-50</span>
+            <span>0</span>
+            <span>+50</span>
+          </div>
+          <div class="meter-track">
+            <div id="meter-needle" class="meter-needle"></div>
+            <div class="meter-center-line"></div>
+          </div>
+          <p id="cents-label" class="cents-label">-- cents</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="signup-card">
+      <h2>¿Quieres promociones?</h2>
+      <p>Regístrate y te avisamos de descuentos y novedades.</p>
+      <a id="signup-link" class="secondary-btn" href="#" target="_blank" rel="noopener">
+        Regístrate aquí
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>ON Music</p>
+  </footer>
+
+  <script src="tuner.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
