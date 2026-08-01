@@ -10,8 +10,29 @@ const centsLabelEl = document.getElementById("cents-label");
 const signupLink = document.getElementById("signup-link");
 const stringLabelEl = document.getElementById("string-label");
 const instrumentButtons = document.querySelectorAll(".instrument-btn");
+const signupModal = document.getElementById("signup-modal");
+const modalSignupLink = document.getElementById("modal-signup-link");
+const modalClose = document.getElementById("modal-close");
+const modalDismiss = document.getElementById("modal-dismiss");
 
 signupLink.href = SIGNUP_FORM_URL;
+modalSignupLink.href = SIGNUP_FORM_URL;
+
+const SIGNUP_PROMPT_SEEN_KEY = "onmusic_signup_prompt_seen";
+
+function showSignupModal() {
+  if (localStorage.getItem(SIGNUP_PROMPT_SEEN_KEY)) return;
+  signupModal.classList.remove("hidden");
+}
+
+function hideSignupModal() {
+  signupModal.classList.add("hidden");
+  localStorage.setItem(SIGNUP_PROMPT_SEEN_KEY, "true");
+}
+
+modalClose.addEventListener("click", hideSignupModal);
+modalDismiss.addEventListener("click", hideSignupModal);
+modalSignupLink.addEventListener("click", hideSignupModal);
 
 let audioContext = null;
 let analyser = null;
@@ -91,6 +112,7 @@ async function startTuner() {
   statusEl.textContent = "Toca una nota";
   toggleBtn.textContent = "Detener afinador";
   tick();
+  showSignupModal();
 }
 
 function stopTuner() {
