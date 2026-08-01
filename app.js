@@ -33,6 +33,9 @@ function hideSignupModal() {
 modalClose.addEventListener("click", hideSignupModal);
 modalDismiss.addEventListener("click", hideSignupModal);
 modalSignupLink.addEventListener("click", hideSignupModal);
+signupModal.addEventListener("click", (event) => {
+  if (event.target === signupModal) hideSignupModal();
+});
 
 let audioContext = null;
 let analyser = null;
