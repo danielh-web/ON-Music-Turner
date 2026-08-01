@@ -61,6 +61,47 @@ main {
   text-align: center;
 }
 
+.instrument-label {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.instrument-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.instrument-btn {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid #3a3a3a;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.instrument-btn.active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #ffffff;
+}
+
+.string-label {
+  margin-top: 8px;
+  font-weight: 700;
+  color: var(--text);
+}
+
 .primary-btn {
   background: var(--brand);
   color: white;

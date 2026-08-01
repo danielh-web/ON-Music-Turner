@@ -20,6 +20,15 @@
 
   <main>
     <section class="tuner-card">
+      <p class="instrument-label">Instrumento</p>
+      <div id="instrument-selector" class="instrument-selector">
+        <button class="instrument-btn active" data-instrument="chromatic">Cromático</button>
+        <button class="instrument-btn" data-instrument="guitar">Guitarra</button>
+        <button class="instrument-btn" data-instrument="bass">Bajo</button>
+        <button class="instrument-btn" data-instrument="ukulele">Ukulele</button>
+        <button class="instrument-btn" data-instrument="violin">Violín</button>
+      </div>
+
       <button id="toggle-btn" class="primary-btn">Iniciar afinador</button>
       <p id="status" class="status">Toca el botón y permite el uso del micrófono</p>
 
@@ -27,6 +36,7 @@
         <div class="note-name">
           <span id="note-letter">--</span><span id="note-octave"></span>
         </div>
+        <p id="string-label" class="string-label hidden"></p>
         <div class="meter">
           <div class="meter-scale">
             <span>-50</span>

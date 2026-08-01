@@ -8,6 +8,8 @@ const noteOctaveEl = document.getElementById("note-octave");
 const needleEl = document.getElementById("meter-needle");
 const centsLabelEl = document.getElementById("cents-label");
 const signupLink = document.getElementById("signup-link");
+const stringLabelEl = document.getElementById("string-label");
+const instrumentButtons = document.querySelectorAll(".instrument-btn");
 
 signupLink.href = SIGNUP_FORM_URL;
 
@@ -16,6 +18,14 @@ let analyser = null;
 let mediaStream = null;
 let rafId = null;
 let listening = false;
+let selectedInstrument = "chromatic";
+
+instrumentButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    selectedInstrument = btn.dataset.instrument;
+    instrumentButtons.forEach((b) => b.classList.toggle("active", b === btn));
+  });
+});
 
 function updateDisplay(frequency) {
   if (frequency === -1) {
@@ -23,7 +33,19 @@ function updateDisplay(frequency) {
     return;
   }
 
-  const { noteName, octave, cents } = frequencyToNote(frequency);
+  const result =
+    selectedInstrument === "chromatic"
+      ? frequencyToNote(frequency)
+      : nearestInstrumentString(frequency, selectedInstrument);
+  const { noteName, octave, cents } = result;
+
+  if (selectedInstrument === "chromatic") {
+    stringLabelEl.classList.add("hidden");
+  } else {
+    stringLabelEl.textContent = result.label;
+    stringLabelEl.classList.remove("hidden");
+  }
+
   noteLetterEl.textContent = noteName;
   noteOctaveEl.textContent = octave;
 
